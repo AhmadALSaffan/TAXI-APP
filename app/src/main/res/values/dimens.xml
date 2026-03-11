@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Bottom sheet -->
+    <dimen name="bottom_sheet_peek_height">220dp</dimen>
+
+    <!-- General spacing -->
+    <dimen name="screen_padding_horizontal">24dp</dimen>
+    <dimen name="screen_padding_vertical">16dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="button_corner_radius">28dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+
+    <!-- Avatar / icon sizes -->
+    <dimen name="avatar_size">44dp</dimen>
+    <dimen name="icon_size_small">18dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">44dp</dimen>
+</resources>

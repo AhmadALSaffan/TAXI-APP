@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Brand -->
+    <color name="brand_blue">#2233FF</color>
+    <color name="brand_blue_dark">#1520CC</color>
+    <color name="brand_blue_alpha">#332233FF</color>
+
+    <!-- Backgrounds -->
+    <color name="dark_navy">#090E27</color>
+    <color name="surface_dark">#141830</color>
+    <color name="surface_dark_blue">#0F1535</color>
+    <color name="surface_dark_semi">#CC141830</color>
+
+    <!-- Text / Icons -->
+    <color name="gray_light">#99AABB</color>
+    <color name="gray_muted">#556070</color>
+
+    <!-- Utility -->
+    <color name="divider_color">#1AFFFFFF</color>
+    <color name="bottom_nav_active">#2233FF</color>
+    <color name="bottom_nav_inactive">#556070</color>
+
+    <color name="card_dark">#1A1A2E</color>
+    <color name="border_blue">#3D5AFE</color>
+    <color name="button_blue">#3D5AFE</color>
+    <color name="button_blue_pressed">#2A40CC</color>
+    <color name="text_hint_gray">#7F7F9A</color>
+
+    <color name="bottom_nav_selector">#3D5AFE</color>
+    <color name="nav_inactive">#5A5A7A</color>
+
+    <color name="error_red">#FF3B30</color>
+    <color name="success_green">#34C759</color>
+
+</resources>

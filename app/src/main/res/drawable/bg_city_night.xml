@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    bg_city_night.xml
+    Place in: res/drawable/bg_city_night.xml
+    Used in:  activity_splash.xml → ImageView imgHeroBg (hero card background)
+    Size:     Scalable vector — works at any resolution
+-->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="300dp"
+    android:viewportWidth="360"
+    android:viewportHeight="300">
+
+    <!-- ── Sky gradient background ── -->
+    <path
+        android:fillColor="#0A0E24"
+        android:pathData="M0,0 L360,0 L360,300 L0,300 Z" />
+
+    <!-- ── Stars (scattered dots) ── -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.8"
+        android:pathData="M30,20 m-1.5,0 a1.5,1.5 0,1,0 3,0 a1.5,1.5 0,1,0 -3,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6"
+        android:pathData="M80,10 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.9"
+        android:pathData="M130,25 m-1.5,0 a1.5,1.5 0,1,0 3,0 a1.5,1.5 0,1,0 -3,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.5"
+        android:pathData="M180,8 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.7"
+        android:pathData="M220,18 m-1.5,0 a1.5,1.5 0,1,0 3,0 a1.5,1.5 0,1,0 -3,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.4"
+        android:pathData="M270,12 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.8"
+        android:pathData="M320,22 m-1.5,0 a1.5,1.5 0,1,0 3,0 a1.5,1.5 0,1,0 -3,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.5"
+        android:pathData="M55,40 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.7"
+        android:pathData="M160,35 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6"
+        android:pathData="M300,38 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.9"
+        android:pathData="M340,5 m-1,0 a1,1 0,1,0 2,0 a1,1 0,1,0 -2,0" />
+
+    <!-- ── Far background buildings (darkest, smallest) ── -->
+    <!-- Building A -->
+    <path android:fillColor="#0D1230"
+        android:pathData="M0,160 L0,210 L30,210 L30,160 Z" />
+    <!-- Windows on A -->
+    <path android:fillColor="#3344AA" android:fillAlpha="0.6"
+        android:pathData="M4,165 L8,165 L8,170 L4,170 Z
+                          M12,165 L16,165 L16,170 L12,170 Z
+                          M20,165 L24,165 L24,170 L20,170 Z
+                          M4,175 L8,175 L8,180 L4,180 Z
+                          M20,175 L24,175 L24,180 L20,180 Z
+                          M4,185 L8,185 L8,190 L4,190 Z
+                          M12,185 L16,185 L16,190 L12,190 Z" />
+
+    <!-- Building B -->
+    <path android:fillColor="#0D1230"
+        android:pathData="M28,140 L28,210 L55,210 L55,140 Z" />
+    <path android:fillColor="#3344AA" android:fillAlpha="0.5"
+        android:pathData="M32,145 L38,145 L38,152 L32,152 Z
+                          M42,145 L48,145 L48,152 L42,152 Z
+                          M32,158 L38,158 L38,165 L32,165 Z
+                          M42,158 L48,158 L48,165 L42,165 Z
+                          M32,172 L38,172 L38,179 L32,179 Z
+                          M42,185 L48,185 L48,192 L42,192 Z" />
+
+    <!-- Building C (tall slim) -->
+    <path android:fillColor="#0B1028"
+        android:pathData="M53,110 L53,210 L72,210 L72,110 L62,100 Z" />
+    <!-- Antenna -->
+    <path android:fillColor="#0D1535"
+        android:pathData="M61,100 L62,65 L63,100 Z" />
+    <!-- Red blink light at antenna top -->
+    <path android:fillColor="#FF3333" android:fillAlpha="0.9"
+        android:pathData="M61,65 m-2,0 a2,2 0,1,0 4,0 a2,2 0,1,0 -4,0" />
+    <path android:fillColor="#3344AA" android:fillAlpha="0.6"
+        android:pathData="M56,115 L60,115 L60,121 L56,121 Z
+                          M64,115 L68,115 L68,121 L64,121 Z
+                          M56,128 L60,128 L60,134 L56,134 Z
+                          M64,128 L68,128 L68,134 L64,134 Z
+                          M56,141 L60,141 L60,147 L56,147 Z
+                          M56,154 L60,154 L60,160 L56,160 Z
+                          M64,154 L68,154 L68,160 L64,160 Z
+                          M64,167 L68,167 L68,173 L64,173 Z
+                          M56,180 L60,180 L60,186 L56,186 Z" />
+
+    <!-- Building D -->
+    <path android:fillColor="#0C1130"
+        android:pathData="M70,150 L70,210 L100,210 L100,150 Z" />
+    <path android:fillColor="#2233CC" android:fillAlpha="0.4"
+        android:pathData="M74,155 L82,155 L82,163 L74,163 Z
+                          M86,155 L94,155 L94,163 L86,163 Z
+                          M74,170 L82,170 L82,178 L74,178 Z
+                          M86,170 L94,170 L94,178 L86,178 Z
+                          M74,185 L82,185 L82,193 L74,193 Z
+                          M86,185 L94,185 L94,193 L86,193 Z" />
+
+    <!-- ── Mid-ground buildings ── -->
+    <!-- Building E (wide, mid height) -->
+    <path android:fillColor="#111530"
+        android:pathData="M95,130 L95,210 L145,210 L145,130 Z" />
+    <!-- Rooftop details -->
+    <path android:fillColor="#0E1228"
+        android:pathData="M100,126 L100,130 L140,130 L140,126 Z" />
+    <path android:fillColor="#2233CC" android:fillAlpha="0.5"
+        android:pathData="M100,135 L110,135 L110,144 L100,144 Z
+                          M115,135 L125,135 L125,144 L115,144 Z
+                          M130,135 L140,135 L140,144 L130,144 Z
+                          M100,150 L110,150 L110,159 L100,159 Z
+                          M130,150 L140,150 L140,159 L130,159 Z
+                          M100,165 L110,165 L110,174 L100,174 Z
+                          M115,165 L125,165 L125,174 L115,174 Z
+                          M130,165 L140,165 L140,174 L130,174 Z
+                          M100,180 L110,180 L110,189 L100,189 Z
+                          M115,180 L125,180 L125,189 L115,189 Z
+                          M130,180 L140,180 L140,189 L130,189 Z" />
+    <!-- Glowing lit windows (brighter blue) -->
+    <path android:fillColor="#4466FF" android:fillAlpha="0.8"
+        android:pathData="M115,150 L125,150 L125,159 L115,159 Z" />
+
+    <!-- Building F (stepped top) -->
+    <path android:fillColor="#10142E"
+        android:pathData="M143,155 L143,210 L185,210 L185,155 L175,155 L175,135 L165,135 L165,115 L155,115 L155,135 L143,135 Z" />
+    <path android:fillColor="#3355FF" android:fillAlpha="0.45"
+        android:pathData="M148,140 L155,140 L155,148 L148,148 Z
+                          M160,120 L167,120 L167,128 L160,128 Z
+                          M148,155 L155,155 L155,163 L148,163 Z
+                          M168,140 L175,140 L175,148 L168,148 Z
+                          M178,160 L184,160 L184,168 L178,168 Z
+                          M148,170 L155,170 L155,178 L148,178 Z
+                          M168,170 L175,170 L175,178 L168,178 Z
+                          M178,175 L184,175 L184,183 L178,183 Z
+                          M148,185 L155,185 L155,193 L148,193 Z" />
+
+    <!-- Building G (foreground large) -->
+    <path android:fillColor="#131728"
+        android:pathData="M183,120 L183,210 L240,210 L240,120 Z" />
+    <!-- Penthouse on top -->
+    <path android:fillColor="#0F132A"
+        android:pathData="M200,100 L200,120 L225,120 L225,100 Z" />
+    <!-- Antenna G -->
+    <path android:fillColor="#0D1228"
+        android:pathData="M212,100 L212,70 L213,70 L213,100 Z" />
+    <path android:fillColor="#FF4444" android:fillAlpha="0.85"
+        android:pathData="M211,70 m-2,0 a2,2 0,1,0 4,0 a2,2 0,1,0 -4,0" />
+    <!-- Windows — mostly dark, some glowing -->
+    <path android:fillColor="#1A2050" android:fillAlpha="0.7"
+        android:pathData="M188,125 L198,125 L198,134 L188,134 Z
+                          M203,125 L213,125 L213,134 L203,134 Z
+                          M218,125 L228,125 L228,134 L218,134 Z
+                          M188,140 L198,140 L198,149 L188,149 Z
+                          M218,140 L228,140 L228,149 L218,149 Z
+                          M188,155 L198,155 L198,164 L188,164 Z
+                          M203,155 L213,155 L213,164 L203,164 Z
+                          M218,155 L228,155 L228,164 L218,164 Z
+                          M188,170 L198,170 L198,179 L188,179 Z
+                          M218,170 L228,170 L228,179 L218,179 Z
+                          M188,185 L198,185 L198,194 L188,194 Z
+                          M203,185 L213,185 L213,194 L203,194 Z
+                          M218,185 L228,185 L228,194 L218,194 Z" />
+    <!-- Bright/lit offices -->
+    <path android:fillColor="#4466FF" android:fillAlpha="0.85"
+        android:pathData="M203,140 L213,140 L213,149 L203,149 Z" />
+    <path android:fillColor="#FFCC44" android:fillAlpha="0.6"
+        android:pathData="M203,170 L213,170 L213,179 L203,179 Z" />
+
+    <!-- Building H -->
+    <path android:fillColor="#0E1226"
+        android:pathData="M238,145 L238,210 L275,210 L275,145 Z" />
+    <path android:fillColor="#2244CC" android:fillAlpha="0.5"
+        android:pathData="M242,150 L252,150 L252,159 L242,159 Z
+                          M257,150 L267,150 L267,159 L257,159 Z
+                          M242,165 L252,165 L252,174 L242,174 Z
+                          M257,165 L267,165 L267,174 L257,174 Z
+                          M242,180 L252,180 L252,189 L242,189 Z
+                          M257,180 L267,180 L267,189 L257,189 Z" />
+
+    <!-- Building I (right side) -->
+    <path android:fillColor="#111428"
+        android:pathData="M273,125 L273,210 L318,210 L318,125 L308,125 L308,105 L298,100 L288,105 L288,125 Z" />
+    <!-- Diamond rooftop feature -->
+    <path android:fillColor="#0C1020"
+        android:pathData="M298,90 L306,100 L298,110 L290,100 Z" />
+    <path android:fillColor="#2233CC" android:fillAlpha="0.5"
+        android:pathData="M278,130 L288,130 L288,139 L278,139 Z
+                          M292,130 L302,130 L302,139 L292,139 Z
+                          M306,130 L313,130 L313,139 L306,139 Z
+                          M278,145 L288,145 L288,154 L278,154 Z
+                          M306,145 L313,145 L313,154 L306,154 Z
+                          M278,160 L288,160 L288,169 L278,169 Z
+                          M292,160 L302,160 L302,169 L292,169 Z
+                          M306,160 L313,160 L313,169 L306,169 Z
+                          M278,175 L288,175 L288,184 L278,184 Z
+                          M292,175 L302,175 L302,184 L292,184 Z
+                          M278,190 L288,190 L288,199 L278,199 Z
+                          M306,190 L313,190 L313,199 L306,199 Z" />
+    <path android:fillColor="#4466FF" android:fillAlpha="0.9"
+        android:pathData="M292,145 L302,145 L302,154 L292,154 Z" />
+
+    <!-- Building J (far right) -->
+    <path android:fillColor="#0D1228"
+        android:pathData="M316,160 L316,210 L360,210 L360,160 Z" />
+    <path android:fillColor="#2244BB" android:fillAlpha="0.45"
+        android:pathData="M320,165 L330,165 L330,173 L320,173 Z
+                          M334,165 L344,165 L344,173 L334,173 Z
+                          M349,165 L357,165 L357,173 L349,173 Z
+                          M320,178 L330,178 L330,186 L320,186 Z
+                          M349,178 L357,178 L357,186 L349,186 Z
+                          M320,191 L330,191 L330,199 L320,199 Z
+                          M334,191 L344,191 L344,199 L334,199 Z" />
+
+    <!-- ── Street level / ground ── -->
+    <path android:fillColor="#080C1E"
+        android:pathData="M0,208 L360,208 L360,300 L0,300 Z" />
+
+    <!-- Road surface -->
+    <path android:fillColor="#0C1020"
+        android:pathData="M0,215 L360,215 L360,240 L0,240 Z" />
+
+    <!-- Road lane markings (dashed yellow) -->
+    <path android:fillColor="#FFCC00" android:fillAlpha="0.6"
+        android:pathData="M0,227 L30,227 L30,230 L0,230 Z
+                          M45,227 L75,227 L75,230 L45,230 Z
+                          M90,227 L120,227 L120,230 L90,230 Z
+                          M135,227 L165,227 L165,230 L135,230 Z
+                          M180,227 L210,227 L210,230 L180,230 Z
+                          M225,227 L255,227 L255,230 L225,230 Z
+                          M270,227 L300,227 L300,230 L270,230 Z
+                          M315,227 L345,227 L345,230 L315,230 Z" />
+
+    <!-- Street light poles -->
+    <path android:fillColor="#1A1E3A"
+        android:pathData="M60,180 L62,180 L62,215 L60,215 Z
+                          M60,180 L80,180 L80,183 L60,183 Z" />
+    <path android:fillColor="#FFEE88" android:fillAlpha="0.8"
+        android:pathData="M76,180 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+
+    <path android:fillColor="#1A1E3A"
+        android:pathData="M200,170 L202,170 L202,215 L200,215 Z
+                          M202,170 L222,170 L222,173 L202,173 Z" />
+    <path android:fillColor="#FFEE88" android:fillAlpha="0.8"
+        android:pathData="M218,170 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+
+    <path android:fillColor="#1A1E3A"
+        android:pathData="M310,185 L312,185 L312,215 L310,215 Z
+                          M290,185 L312,185 L312,188 L290,188 Z" />
+    <path android:fillColor="#FFEE88" android:fillAlpha="0.8"
+        android:pathData="M294,185 m-4,0 a4,4 0,1,0 8,0 a4,4 0,1,0 -8,0" />
+
+    <!-- ── Blue city glow on horizon ── -->
+    <path android:fillColor="#1122AA" android:fillAlpha="0.12"
+        android:pathData="M0,195 Q180,170 360,195 L360,215 L0,215 Z" />
+
+    <!-- ── Dark gradient overlay at bottom (fade to black) ── -->
+    <path android:fillColor="#090E24" android:fillAlpha="0.55"
+        android:pathData="M0,240 L360,240 L360,300 L0,300 Z" />
+
+</vector>
