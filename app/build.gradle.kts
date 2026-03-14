@@ -64,6 +64,7 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.59.2")
     implementation("com.google.android.libraries.places:places:4.1.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.google.firebase:firebase-messaging:25.0.1")
 
 }
 apply( plugin = "com.google.gms.google-services")

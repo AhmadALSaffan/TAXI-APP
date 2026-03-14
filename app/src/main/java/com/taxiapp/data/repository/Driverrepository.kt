@@ -20,27 +20,23 @@ import javax.inject.Singleton
 @Singleton
 class DriverRepository @Inject constructor(
     private val auth: FirebaseAuth,
-    private val database: FirebaseDatabase
+    private val database: FirebaseDatabase,
+    private val fcmRepository: FcmRepository
 ) {
 
     fun observeNearbyTrips(driverLat: Double, driverLng: Double, radiusKm: Double = 15.0): Flow<Resource<List<Trip>>> =
         callbackFlow {
-            val ref = database.getReference("trips")
+            val ref      = database.getReference("trips")
             val listener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val nearby = mutableListOf<Trip>()
                     for (child in snapshot.children) {
                         val trip = child.getValue(Trip::class.java) ?: continue
                         if (trip.status != TripStatus.SEARCHING) continue
-                        val distKm = PricingEngine.haversineKm(
-                            driverLat, driverLng,
-                            trip.pickupLat, trip.pickupLng
-                        )
+                        val distKm = PricingEngine.haversineKm(driverLat, driverLng, trip.pickupLat, trip.pickupLng)
                         if (distKm <= radiusKm) nearby.add(trip)
                     }
-                    nearby.sortBy { trip ->
-                        PricingEngine.haversineKm(driverLat, driverLng, trip.pickupLat, trip.pickupLng)
-                    }
+                    nearby.sortBy { PricingEngine.haversineKm(driverLat, driverLng, it.pickupLat, it.pickupLng) }
                     trySend(Resource.Success(nearby))
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -55,7 +51,7 @@ class DriverRepository @Inject constructor(
         val uid = auth.currentUser?.uid ?: return Resource.Error("Not authenticated")
         return try {
             val driverSnapshot = database.getReference("users/$uid").get().await()
-            val driver = driverSnapshot.getValue(User::class.java)
+            val driver         = driverSnapshot.getValue(User::class.java)
 
             val updates = mutableMapOf<String, Any>(
                 "trips/${trip.tripId}/status"         to TripStatus.ACCEPTED,
@@ -63,12 +59,18 @@ class DriverRepository @Inject constructor(
                 "trips/${trip.tripId}/driverName"     to (driver?.displayName ?: "Driver"),
                 "trips/${trip.tripId}/driverRating"   to (driver?.rating ?: 5.0),
                 "trips/${trip.tripId}/driverPhotoUrl" to (driver?.photoUrl ?: ""),
-                "trips/${trip.tripId}/driverVehicle"  to (driver?.vehicle ?: "Toyota Camry"),
+                "trips/${trip.tripId}/driverVehicle"  to (driver?.vehicle ?: ""),
                 "trips/${trip.tripId}/driverPlate"    to (driver?.plate ?: ""),
                 "trips/${trip.tripId}/driverLat"      to driverLat,
                 "trips/${trip.tripId}/driverLng"      to driverLng
             )
             database.reference.updateChildren(updates).await()
+
+            fcmRepository.sendDriverAcceptedNotification(
+                trip,
+                driver?.displayName ?: "Your driver"
+            )
+
             Resource.Success(trip.tripId)
         } catch (e: Exception) {
             Resource.Error(e.message ?: "Failed to accept trip")
