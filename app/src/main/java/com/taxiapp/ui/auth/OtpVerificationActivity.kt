@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.Snackbar
 import com.taxiapp.databinding.ActivityOtpVerificationBinding
+import com.taxiapp.ui.driver.DriverHomeActivity
 import com.taxiapp.ui.home.HomeActivity
 import com.taxiapp.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,7 @@ class OtpVerificationActivity : AppCompatActivity() {
         observeVerifyState()
         observeRoleState()
         observeResendState()
+        hideSystemBars()
 
         binding.btnBack.setOnClickListener { finish() }
         binding.btnVerify.setOnClickListener { submitOtp() }
@@ -199,7 +201,7 @@ class OtpVerificationActivity : AppCompatActivity() {
 
     private fun routeByRole(role: String) {
         val destination = when (role) {
-            // "driver" -> Intent(this, DriverHomeActivity::class.java)
+            "driver" -> Intent(this, DriverHomeActivity::class.java)
             else -> Intent(this, HomeActivity::class.java)
         }
         destination.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

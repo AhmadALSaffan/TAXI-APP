@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingBottom="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_surface"
+            android:src="@drawable/ic_check_circle"
+            android:padding="8dp"
+            android:contentDescription="Completed"
+            app:tint="@color/success_green" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trip Completed"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins_bold" />
+
+            <TextView
+                android:id="@+id/tvCompletedTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_light"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCompletedTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textColor="@color/brand_blue"
+            android:textSize="26sp"
+            android:fontFamily="@font/poppins_bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_radio_button_checked"
+            android:contentDescription="Pickup"
+            app:tint="@color/brand_blue" />
+
+        <TextView
+            android:id="@+id/tvCompletedPickup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="14dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_location_pin"
+            android:contentDescription="Dropoff"
+            app:tint="@color/error_red" />
+
+        <TextView
+            android:id="@+id/tvCompletedDropoff"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FARE BREAKDOWN"
+        android:textColor="@color/gray_muted"
+        android:textSize="10sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Base Fare"
+            android:textColor="@color/gray_light"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular" />
+        <TextView
+            android:id="@+id/tvCBaseFare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Distance Fare"
+            android:textColor="@color/gray_light"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular" />
+        <TextView
+            android:id="@+id/tvCDistanceFare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Time Fare"
+            android:textColor="@color/gray_light"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular" />
+        <TextView
+            android:id="@+id/tvCTimeFare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutCTollsRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tolls &amp; Fees"
+            android:textColor="@color/gray_light"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_regular" />
+        <TextView
+            android:id="@+id/tvCTollsAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_medium" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="14dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total Paid"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="end">
+            <TextView
+                android:id="@+id/tvCTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/brand_blue"
+                android:textSize="20sp"
+                android:fontFamily="@font/poppins_bold" />
+            <TextView
+                android:id="@+id/tvCPaymentMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_muted"
+                android:textSize="11sp"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDownloadInvoiceDialog"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Download Invoice"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppins_bold"
+        android:backgroundTint="@color/brand_blue"
+        android:drawableStart="@drawable/ic_download"
+        android:drawablePadding="8dp"
+        style="@style/Widget.MaterialComponents.Button"
+        app:cornerRadius="26dp" />
+
+</LinearLayout>

@@ -16,7 +16,7 @@ data class PaymentMethod(
     val id: String,
     val label: String,
     val type: String,
-    val brand: String = ""
+    val brand: String
 )
 
 data class FareBreakdown(
@@ -60,7 +60,8 @@ data class Trip(
     val driverPlate: String = "",
     val driverPhotoUrl: String = "",
     val driverLat: Double = 0.0,
-    val driverLng: Double = 0.0
+    val driverLng: Double = 0.0,
+    val cashPaid: Boolean = false
 )
 
 object TripStatus {

@@ -31,7 +31,7 @@ class RideSelectionViewModel @Inject constructor(
     private val _selectedRide = MutableStateFlow(rideOptions.first())
     val selectedRide: StateFlow<RideOption> = _selectedRide.asStateFlow()
 
-    private val _selectedPayment = MutableStateFlow(PaymentMethod("visa", "VISA  ····  4242", "card"))
+    private val _selectedPayment = MutableStateFlow(PaymentMethod("visa", "VISA  ····  4242", "card", "visa"))
     val selectedPayment: StateFlow<PaymentMethod> = _selectedPayment.asStateFlow()
 
     private val _paymentMethods = MutableStateFlow<List<PaymentMethod>>(emptyList())

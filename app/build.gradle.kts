@@ -63,6 +63,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:5.0.5")
     ksp("com.google.dagger:hilt-compiler:2.59.2")
     implementation("com.google.android.libraries.places:places:4.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
 }
 apply( plugin = "com.google.gms.google-services")

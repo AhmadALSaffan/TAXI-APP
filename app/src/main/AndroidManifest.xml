@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TAXIAPP">
         <activity
+            android:name=".ui.driver.DriverHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.search.DestinationSearchActivity"
             android:exported="false" />
         <activity

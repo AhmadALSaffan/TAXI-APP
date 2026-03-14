@@ -66,7 +66,7 @@ class RideRepository @Inject constructor(
     }
 
     private fun defaultPaymentMethods() = listOf(
-        PaymentMethod("cash",  "Cash",         "cash"),
-        PaymentMethod("wallet","App Wallet",   "wallet")
+        PaymentMethod("cash",  "Cash",         "cash", "cash"),
+        PaymentMethod("wallet","App Wallet",   "wallet", "wallet")
     )
 }

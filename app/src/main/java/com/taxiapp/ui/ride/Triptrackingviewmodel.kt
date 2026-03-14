@@ -26,11 +26,14 @@ class TripTrackingViewModel @Inject constructor(
     private val database: FirebaseDatabase
 ) : ViewModel() {
 
-    private val _tripState = MutableStateFlow<Resource<Trip>>(Resource.Loading as Resource<Trip>)
+    private val _tripState     = MutableStateFlow<Resource<Trip>>(Resource.Loading as Resource<Trip>)
     val tripState: StateFlow<Resource<Trip>> = _tripState.asStateFlow()
 
-    private val _cancelState = MutableStateFlow<Resource<Unit>?>(null)
+    private val _cancelState   = MutableStateFlow<Resource<Unit>?>(null)
     val cancelState: StateFlow<Resource<Unit>?> = _cancelState.asStateFlow()
+
+    private val _completeState = MutableStateFlow<Resource<Unit>?>(null)
+    val completeState: StateFlow<Resource<Unit>?> = _completeState.asStateFlow()
 
     fun observeTrip(tripId: String) {
         viewModelScope.launch {
@@ -56,9 +59,7 @@ class TripTrackingViewModel @Inject constructor(
         viewModelScope.launch {
             _cancelState.value = Resource.Loading as Resource<Unit>
             try {
-                database.getReference("trips/$tripId/status")
-                    .setValue(TripStatus.CANCELLED)
-                    .await()
+                database.getReference("trips/$tripId/status").setValue(TripStatus.CANCELLED).await()
                 _cancelState.value = Resource.Success(Unit)
             } catch (e: Exception) {
                 _cancelState.value = Resource.Error(e.message ?: "Failed to cancel")
@@ -66,5 +67,31 @@ class TripTrackingViewModel @Inject constructor(
         }
     }
 
-    fun resetCancelState() { _cancelState.value = null }
+    fun markCashPaid(tripId: String) {
+        viewModelScope.launch {
+            try {
+                database.getReference("trips/$tripId/cashPaid").setValue(true).await()
+            } catch (_: Exception) {}
+        }
+    }
+
+    fun completeTrip(tripId: String) {
+        viewModelScope.launch {
+            _completeState.value = Resource.Loading as Resource<Unit>
+            try {
+                database.reference.updateChildren(
+                    mapOf(
+                        "trips/$tripId/status"      to TripStatus.COMPLETED,
+                        "trips/$tripId/completedAt" to System.currentTimeMillis()
+                    )
+                ).await()
+                _completeState.value = Resource.Success(Unit)
+            } catch (e: Exception) {
+                _completeState.value = Resource.Error(e.message ?: "Failed to complete trip")
+            }
+        }
+    }
+
+    fun resetCancelState()   { _cancelState.value   = null }
+    fun resetCompleteState() { _completeState.value  = null }
 }

@@ -19,11 +19,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseDatabase(): FirebaseDatabase =
-        FirebaseDatabase.getInstance().also {
-            // Enable offline persistence
-            it.setPersistenceEnabled(true)
-        }
+    fun provideFirebaseDatabase(): FirebaseDatabase = FirebaseDatabase.getInstance()
 
     @Provides
     @Singleton
