@@ -26,7 +26,7 @@
 
 | Home (Passenger) | Home (Driver) | Prices | Trip Details | Finish Ride |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/home_TAXI%20APP.jpg" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/home_driver_TAXI%20APP.jpg" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/Prices_TAXI%20APP.jpg" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/trip_details_TAXI%20APP.jpg" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/finish_ride_TAXI%20APP.jpg" width="180px"> |
+| <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/home_TAXI%20APP.png" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/home_driver_TAXI%20APP.png" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/Prices_TAXI%20APP.png" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/trip_details_TAXI%20APP.png" width="180px"> | <img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/finish_ride_TAXI%20APP.png" width="180px"> |
 
 ---
 
