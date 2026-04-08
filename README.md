@@ -48,6 +48,7 @@
 - 🔐 **Authentication** — Secure login and registration via Firebase Auth
 - 🔄 **Real-Time Sync** — Live updates powered by Firebase Realtime Database
 - 🎨 **Material Design UI** — Clean, modern interface with intuitive layouts
+- 🔔 **Push Notifications** — Real-time ride request alerts via Firebase Cloud Messaging
 
 ---
 
