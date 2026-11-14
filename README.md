@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://ik.imagekit.io/qeitebnxx/TAXI%20APP/TAXI.png" alt="Taxi App Icon" width="12%" />
+<img src="docs/logo.svg" alt="Taxi App icon: a route from a pickup ring to a destination pin on taxi amber" width="12%" />
 
 #  Taxi App
 ### A real-time ride-hailing app for passengers and drivers

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72" width="512" height="512">
+  <title>TAXI APP</title>
+  <!-- Same artwork as the launcher icon: app/src/main/res/drawable/ic_launcher_mark.xml on Signal Amber. -->
+  <rect x="18" y="18" width="72" height="72" rx="17" fill="#FFB224"/>
+  <path d="M28,71 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0" fill="none" stroke="#0E0F11" stroke-width="5.5"/>
+  <path d="M42,71 H58 Q68,71 68,61 V56" fill="none" stroke="#0E0F11" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path fill="#0E0F11" fill-rule="evenodd" d="M68,55 C64.5,49.5 57.5,46 57.5,38 A10.5,10.5 0 1,1 78.5,38 C78.5,46 71.5,49.5 68,55 Z M64,38 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z"/>
+</svg>
