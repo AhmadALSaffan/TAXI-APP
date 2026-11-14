@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launch screen icon: the route draws from the pickup ring, then the pin drops in.
+     Same geometry as ic_launcher_mark. -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="108dp"
+            android:height="108dp"
+            android:viewportWidth="108"
+            android:viewportHeight="108">
+            <path
+                android:pathData="M28,71 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0"
+                android:strokeColor="#0E0F11"
+                android:strokeWidth="5.5"
+                android:fillColor="#00000000" />
+            <path
+                android:name="route"
+                android:pathData="M42,71 H58 Q68,71 68,61 V56"
+                android:strokeColor="#0E0F11"
+                android:strokeWidth="8"
+                android:strokeLineCap="round"
+                android:strokeLineJoin="round"
+                android:trimPathEnd="0"
+                android:fillColor="#00000000" />
+            <group
+                android:name="pin"
+                android:pivotX="68"
+                android:pivotY="55"
+                android:scaleX="0"
+                android:scaleY="0">
+                <path
+                    android:fillType="evenOdd"
+                    android:fillColor="#0E0F11"
+                    android:pathData="M68,55 C64.5,49.5 57.5,46 57.5,38 A10.5,10.5 0 1,1 78.5,38 C78.5,46 71.5,49.5 68,55 Z M64,38 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="route">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="trimPathEnd"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:startOffset="100"
+                android:duration="480"
+                android:interpolator="@android:interpolator/fast_out_slow_in" />
+        </aapt:attr>
+    </target>
+    <target android:name="pin">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:startOffset="500"
+                    android:duration="340"
+                    android:interpolator="@android:anim/overshoot_interpolator" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:startOffset="500"
+                    android:duration="340"
+                    android:interpolator="@android:anim/overshoot_interpolator" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

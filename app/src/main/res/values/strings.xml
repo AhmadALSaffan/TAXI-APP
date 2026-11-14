@@ -1,48 +1,202 @@
 <resources>
     <string name="app_name">TAXI APP</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <!-- Onboarding -->
+    <string name="onboarding_1_title">Your ride,\nin minutes.</string>
+    <string name="onboarding_1_accent">in minutes.</string>
+    <string name="onboarding_1_body">Tell us where you’re going. A nearby driver accepts and you watch them arrive on the map.</string>
+    <string name="onboarding_2_title">Know who’s\npicking you up.</string>
+    <string name="onboarding_2_accent">picking you up.</string>
+    <string name="onboarding_2_body">See your driver’s name, rating, car and plate before they arrive, and follow them live.</string>
+    <string name="onboarding_3_title">The fare is set\nbefore you go.</string>
+    <string name="onboarding_3_accent">before you go.</string>
+    <string name="onboarding_3_body">You see the price when you book, and that’s the price you pay. Cash or wallet.</string>
+    <string name="onboarding_page_of">Page %1$d of %2$d</string>
+    <string name="onboarding_google">Continue with Google</string>
+    <string name="onboarding_phone">Use phone number instead</string>
+    <string name="onboarding_legal">By continuing, you agree to our Terms of Service and Privacy Policy.</string>
+    <string name="onboarding_error_google_generic">Couldn’t sign in with Google. Check your connection and try again.</string>
+    <string name="onboarding_error_no_account">No Google account on this device. Add one in Settings, or use your phone number.</string>
 
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
-        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
-        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
-        bibendum, vel congue leo egestas.\n\n
-        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
-        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
-        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
-        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
-        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
-        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
-        est.\n\n
-        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
-        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
-        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
-        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
-        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
-        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
-        convallis.\n\n
-        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
-        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
-        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
-        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
-        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
-        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
-        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
-    </string>
+    <!-- Phone sign-in -->
+    <string name="action_back">Back</string>
+    <string name="phone_title">What’s your number?</string>
+    <string name="phone_subtitle">We’ll text you a 6-digit code to confirm it’s you.</string>
+    <string name="phone_choose_country">Choose country</string>
+    <string name="phone_search_country">Search country or code</string>
+    <string name="phone_hint">Phone number</string>
+    <string name="phone_rates">Standard SMS rates may apply.</string>
+    <string name="phone_send_code">Send code</string>
+    <string name="phone_edit_number">Change number</string>
+    <string name="phone_code_resent">New code sent.</string>
+    <string name="phone_error_invalid">That number doesn’t look right. Check it and try again.</string>
+    <string name="phone_error_send">Couldn’t send the code. Check your connection and try again.</string>
+    <string name="phone_error_too_many">Too many attempts from this device. Wait a while and try again.</string>
+    <string name="phone_error_session">This code has expired. Tap Resend code to get a new one.</string>
+    <string name="phone_error_wrong_code">That code didn’t match. Check the SMS and try again.</string>
+    <string name="code_title">Enter the code</string>
+    <string name="code_subtitle_prefix">Sent by SMS to</string>
+    <string name="code_field_label">6-digit code</string>
+    <string name="code_verifying">Checking code…</string>
+    <string name="code_resend_in">Resend code in %1$d:%2$02d</string>
+    <string name="code_not_received">Didn’t get it?</string>
+    <string name="code_resend">Resend code</string>
 
+    <!-- Common -->
+    <string name="action_open">Open</string>
+    <string name="action_allow">Allow</string>
+    <string name="action_continue">Continue</string>
 
-    <string name="google_maps_key">AIzaSyC5sciVZfTc3ZuAwWK2nEYYztgwbNS9pi0</string>
+    <!-- Rider home -->
+    <string name="tab_home">Home</string>
+    <string name="tab_rides">Rides</string>
+    <string name="tab_account">Account</string>
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="home_where_to">Where are you going?</string>
+    <string name="home_search">Search destination</string>
+    <string name="home_where_to_short">Where to?</string>
+    <string name="home_pickup">Pickup</string>
+    <string name="home_locating">Finding your location…</string>
+    <string name="home_current_location">Current location</string>
+    <string name="home_recenter">Center on my location</string>
+    <string name="home_place_home">Home</string>
+    <string name="home_place_work">Work</string>
+    <string name="home_place_recent">Recent</string>
+    <string name="home_places_empty">Places you ride to will show up here for one-tap booking.</string>
+    <string name="home_location_off">Turn on location so drivers know where to pick you up.</string>
+    <string name="home_active_trip_to">To %1$s</string>
+    <string name="status_searching">Finding a driver</string>
+    <string name="status_accepted">Driver on the way</string>
+    <string name="status_arrived">Driver has arrived</string>
+    <string name="status_ongoing">On your trip</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="rides_title">Your rides</string>
+    <string name="rides_from">From %1$s</string>
+    <string name="rides_empty_title">No rides yet</string>
+    <string name="rides_empty_body">Your trips and receipts will show up here.</string>
+    <string name="account_no_name">Your account</string>
+    <string name="account_rating">Rating</string>
+    <string name="account_trips">Trips</string>
+    <string name="account_member_since">Member since</string>
+    <string name="account_sign_out">Sign out</string>
+
+    <!-- Driver home -->
+    <string name="driver_you">You</string>
+    <string name="driver_today">Today</string>
+    <string name="driver_status_online">You’re online</string>
+    <string name="driver_status_offline">You’re offline</string>
+    <string name="driver_offline_title">Ready to drive?</string>
+    <string name="driver_offline_body">Go online to start getting trip requests near you.</string>
+    <string name="driver_go_online">Go online</string>
+    <string name="driver_go_offline">Go offline</string>
+    <string name="driver_waiting_title">Looking for trips</string>
+    <string name="driver_waiting_body">Requests within 15 km will appear here.</string>
+    <string name="driver_pickup_away">Pickup %1$s km away</string>
+    <string name="driver_trip_length">%1$s km · %2$d min trip</string>
+    <string name="driver_accept">Accept</string>
+    <string name="driver_trip_in_progress">Trip in progress</string>
+    <string name="driver_pickup_at">Pickup at %1$s</string>
+    <string name="driver_location_needed">Location is needed to receive trip requests.</string>
+    <plurals name="driver_trips_count">
+        <item quantity="one">%d trip</item>
+        <item quantity="other">%d trips</item>
+    </plurals>
+    <plurals name="driver_requests_nearby">
+        <item quantity="one">%d trip request nearby</item>
+        <item quantity="other">%d trip requests nearby</item>
+    </plurals>
+
+    <!-- Destination search -->
+    <string name="search_hint">Where to?</string>
+    <string name="search_clear">Clear</string>
+    <string name="search_on_map">Choose on map</string>
+    <string name="search_on_map_body">Move the map to the exact spot</string>
+    <string name="search_on_map_title">Set your destination</string>
+    <string name="search_on_map_unnamed">Unnamed location</string>
+    <string name="search_on_map_confirm">Confirm destination</string>
+    <string name="search_recent">Recent</string>
+    <string name="search_start_title">Search for a place</string>
+    <string name="search_start_body">Type an address, a landmark or a business name.</string>
+    <string name="search_empty_title">No places found</string>
+    <string name="search_empty_body">Check the spelling or try a nearby landmark.</string>
+    <string name="search_failed_title">Search isn’t working right now</string>
+    <string name="search_failed_body">Check your connection and try again.</string>
+
+    <!-- Ride selection -->
+    <string name="ride_choose">Choose a ride</string>
+    <string name="ride_facts">%1$s km · %2$d min · arrive around %3$s</string>
+    <string name="ride_economy">Economy</string>
+    <string name="ride_premium">Premium</string>
+    <string name="ride_xl">XL</string>
+    <string name="ride_economy_desc">Everyday rides</string>
+    <string name="ride_premium_desc">Newer cars, top-rated drivers</string>
+    <string name="ride_xl_desc">Room for groups and luggage</string>
+    <string name="ride_eta_desc">%1$d min away · %2$s</string>
+    <string name="ride_book">Book %1$s · %2$s</string>
+    <string name="payment_title">Payment</string>
+    <string name="payment_change">Change</string>
+    <string name="payment_cash">Cash</string>
+    <string name="payment_wallet">App wallet</string>
+    <string name="payment_card">Card</string>
+    <string name="payment_card_ending">Card ·· %1$s</string>
+
+    <!-- Trip: rider -->
+    <string name="trip_finding_title">Finding your driver</string>
+    <string name="trip_finding_body">We’re matching you with a driver nearby.</string>
+    <string name="trip_your_driver">Your driver</string>
+    <string name="trip_passenger">passenger</string>
+    <string name="trip_on_the_way">%1$s is on the way</string>
+    <string name="trip_arriving_in">Arriving in about %1$d min</string>
+    <string name="trip_heading_to_you">Heading to your pickup</string>
+    <string name="trip_driver_here">Your driver is here</string>
+    <string name="trip_look_for">Look for %1$s</string>
+    <string name="trip_heading_to">Heading to %1$s</string>
+    <string name="trip_arrive_around">Arrive around %1$s</string>
+    <string name="trip_cancel">Cancel ride</string>
+    <string name="trip_cancel_title">Cancel this ride?</string>
+    <string name="trip_cancel_body">Your driver will be told straight away.</string>
+    <string name="trip_cancel_body_driver">The rider will be told and can book again.</string>
+    <string name="trip_cancel_confirm">Yes, cancel</string>
+    <string name="trip_cancel_keep">Keep ride</string>
+    <string name="trip_cancelled_title">Trip cancelled</string>
+    <string name="trip_cancelled_body">This trip won’t go ahead.</string>
+    <string name="trip_back_home">Back home</string>
+    <string name="trip_not_found_title">Trip not found</string>
+    <string name="trip_not_found_body">It may have been removed, or you don’t have access to it.</string>
+
+    <!-- Trip: driver -->
+    <string name="drive_pick_up">Pick up %1$s</string>
+    <string name="drive_waiting_for">Waiting for %1$s</string>
+    <string name="drive_waiting_body">Start the trip once they’re in the car.</string>
+    <string name="drive_drop_off">Drop off %1$s</string>
+    <string name="drive_navigate">Navigate</string>
+    <string name="drive_no_maps">No maps app found</string>
+    <string name="drive_arrived">I’ve arrived</string>
+    <string name="drive_start">Start trip</string>
+    <string name="drive_slide_finish">Slide to finish trip</string>
+    <string name="drive_collect_title">Collect payment</string>
+    <string name="drive_collect_label">Collect in cash</string>
+    <string name="drive_finish_title">Finish trip</string>
+    <string name="drive_cash_received">Cash received · Finish</string>
+    <string name="drive_finish">Finish trip</string>
+    <string name="drive_complete_title">Trip complete</string>
+    <string name="drive_earned">+%1$s earned</string>
+    <string name="drive_paid_cash">Paid in cash</string>
+    <string name="drive_paid_app">Paid in the app</string>
+    <string name="drive_back_to_requests">Back to requests</string>
+
+    <!-- Receipt -->
+    <string name="receipt_title">You’ve arrived</string>
+    <string name="receipt_download">Download receipt</string>
+    <string name="receipt_done">Done</string>
+    <string name="receipt_saved">Receipt saved to Downloads</string>
+    <string name="receipt_failed">Couldn’t save the receipt</string>
+    <string name="fare_base">Base fare</string>
+    <string name="fare_distance">Distance (%1$s km)</string>
+    <string name="fare_time">Time (%1$d min)</string>
+    <string name="fare_tolls">Tolls &amp; fees</string>
+    <string name="fare_minimum">Minimum fare</string>
+    <string name="fare_total">Total</string>
 </resources>

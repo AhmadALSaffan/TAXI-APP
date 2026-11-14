@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TaxiApp mark: a route from a pickup ring to a destination pin.
+     108dp adaptive-icon canvas; the mark sits inside the 66dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M28,71 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0"
+        android:strokeColor="#0E0F11"
+        android:strokeWidth="5.5"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M42,71 H58 Q68,71 68,61 V56"
+        android:strokeColor="#0E0F11"
+        android:strokeWidth="8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+    <path
+        android:fillType="evenOdd"
+        android:fillColor="#0E0F11"
+        android:pathData="M68,55 C64.5,49.5 57.5,46 57.5,38 A10.5,10.5 0 1,1 78.5,38 C78.5,46 71.5,49.5 68,55 Z M64,38 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z" />
+</vector>

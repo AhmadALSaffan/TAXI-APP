@@ -20,8 +20,7 @@ import javax.inject.Singleton
 @Singleton
 class DriverRepository @Inject constructor(
     private val auth: FirebaseAuth,
-    private val database: FirebaseDatabase,
-    private val fcmRepository: FcmRepository
+    private val database: FirebaseDatabase
 ) {
 
     fun observeNearbyTrips(driverLat: Double, driverLng: Double, radiusKm: Double = 15.0): Flow<Resource<List<Trip>>> =
@@ -47,6 +46,36 @@ class DriverRepository @Inject constructor(
             awaitClose { ref.removeEventListener(listener) }
         }
 
+    /**
+     * Trips assigned to this driver: today's completed earnings and any trip still in progress
+     * (so the driver can get back to it after closing the app).
+     */
+    fun observeMyTrips(): Flow<DriverTripsSummary> = callbackFlow {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            close()
+            return@callbackFlow
+        }
+        val query = database.getReference("trips").orderByChild("driverId").equalTo(uid)
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val trips = snapshot.children.mapNotNull { it.getValue(Trip::class.java) }
+                val startOfDay = java.util.Calendar.getInstance().apply {
+                    set(java.util.Calendar.HOUR_OF_DAY, 0); set(java.util.Calendar.MINUTE, 0)
+                    set(java.util.Calendar.SECOND, 0); set(java.util.Calendar.MILLISECOND, 0)
+                }.timeInMillis
+                val today = trips.filter { it.status == TripStatus.COMPLETED && it.completedAt >= startOfDay }
+                val active = trips.filter {
+                    it.status == TripStatus.ACCEPTED || it.status == TripStatus.ARRIVED || it.status == TripStatus.ONGOING
+                }.maxByOrNull { it.createdAt }
+                trySend(DriverTripsSummary(today.sumOf { it.price }, today.size, active))
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        }
+        query.addValueEventListener(listener)
+        awaitClose { query.removeEventListener(listener) }
+    }
+
     suspend fun acceptTrip(trip: Trip, driverLat: Double, driverLng: Double): Resource<String> {
         val uid = auth.currentUser?.uid ?: return Resource.Error("Not authenticated")
         return try {
@@ -65,11 +94,7 @@ class DriverRepository @Inject constructor(
                 "trips/${trip.tripId}/driverLng"      to driverLng
             )
             database.reference.updateChildren(updates).await()
-
-            fcmRepository.sendDriverAcceptedNotification(
-                trip,
-                driver?.displayName ?: "Your driver"
-            )
+            // Passenger push is sent by the onTripStatusChanged Cloud Function.
 
             Resource.Success(trip.tripId)
         } catch (e: Exception) {
@@ -96,7 +121,16 @@ class DriverRepository @Inject constructor(
     suspend fun setDriverAvailability(available: Boolean) {
         val uid = auth.currentUser?.uid ?: return
         try {
-            database.getReference("drivers/$uid/available").setValue(available).await()
+            val ref = database.getReference("drivers/$uid/available")
+            // If the app is killed or loses connection, the server marks the driver unavailable.
+            if (available) ref.onDisconnect().setValue(false).await() else ref.onDisconnect().cancel().await()
+            ref.setValue(available).await()
         } catch (_: Exception) {}
     }
 }
+
+data class DriverTripsSummary(
+    val todayEarnings: Double = 0.0,
+    val todayTrips: Int = 0,
+    val activeTrip: Trip? = null,
+)

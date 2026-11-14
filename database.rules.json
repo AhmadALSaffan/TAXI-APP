@@ -1,0 +1,143 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "config": {
+      ".read": false,
+      ".write": false
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "role": {
+          ".validate": "(!data.exists() && newData.val() === 'passenger') || newData.val() === data.val()"
+        },
+        "rating": {
+          ".validate": "(!data.exists() && newData.val() === 5) || newData.val() === data.val()"
+        }
+      }
+    },
+    "drivers": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid && root.child('users').child(auth.uid).child('role').val() === 'driver'"
+      }
+    },
+    "trips": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'driver'",
+      ".indexOn": [
+        "status",
+        "passengerId",
+        "driverId"
+      ],
+      "$tripId": {
+        ".read": "auth != null && (data.child('passengerId').val() === auth.uid || data.child('driverId').val() === auth.uid)",
+        ".write": "auth != null && newData.exists() && ((!data.exists() && newData.child('passengerId').val() === auth.uid) || (data.exists() && (data.child('passengerId').val() === auth.uid || data.child('driverId').val() === auth.uid || (data.child('status').val() === 'searching' && root.child('users').child(auth.uid).child('role').val() === 'driver'))))",
+        ".validate": "newData.hasChildren(['passengerId', 'status', 'rideType', 'pickupLat', 'pickupLng', 'dropoffLat', 'dropoffLng'])",
+        "tripId": {
+          ".validate": "newData.val() === $tripId"
+        },
+        "passengerId": {
+          ".validate": "!data.parent().exists() ? newData.val() === auth.uid : newData.val() === data.val()"
+        },
+        "passengerName": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "pickupAddress": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "dropoffAddress": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "pickupLat": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "pickupLng": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "dropoffLat": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "dropoffLng": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "rideType": {
+          ".validate": "(!data.parent().exists() && (newData.val() === 'economy' || newData.val() === 'premium' || newData.val() === 'xl')) || newData.val() === data.val()"
+        },
+        "paymentMethod": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber() && ((!data.parent().exists() && newData.val() <= now) || newData.val() === data.val())"
+        },
+        "price": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "baseFare": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "distanceFare": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "timeFare": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "tolls": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "distanceMiles": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "durationMinutes": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val())"
+        },
+        "fareVerified": {
+          ".validate": "newData.val() === data.val()"
+        },
+        "cancelReason": {
+          ".validate": "newData.val() === data.val()"
+        },
+        "status": {
+          ".validate": "newData.isString() && ((!data.parent().exists() && newData.val() === 'searching') || newData.val() === data.val() || (data.val() === 'searching' && newData.val() === 'accepted' && newData.parent().child('driverId').val() === auth.uid && root.child('users').child(auth.uid).child('role').val() === 'driver') || (newData.val() === 'cancelled' && (data.val() === 'searching' || data.val() === 'accepted' || data.val() === 'arrived') && (data.parent().child('passengerId').val() === auth.uid || data.parent().child('driverId').val() === auth.uid)) || (data.parent().child('driverId').val() === auth.uid && ((data.val() === 'accepted' && newData.val() === 'arrived') || ((data.val() === 'accepted' || data.val() === 'arrived') && newData.val() === 'ongoing') || ((data.val() === 'accepted' || data.val() === 'arrived' || data.val() === 'ongoing') && newData.val() === 'completed'))))"
+        },
+        "driverId": {
+          ".validate": "(!data.parent().exists() && newData.val() === '') || newData.val() === data.val() || (data.val() === '' && newData.val() === auth.uid && data.parent().child('status').val() === 'searching' && root.child('users').child(auth.uid).child('role').val() === 'driver')"
+        },
+        "driverName": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverRating": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverVehicle": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverPlate": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverPhotoUrl": {
+          ".validate": "newData.isString() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverLat": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "driverLng": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "startedAt": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "completedAt": {
+          ".validate": "newData.isNumber() && (!data.parent().exists() || newData.val() === data.val() || newData.parent().child('driverId').val() === auth.uid)"
+        },
+        "cashPaid": {
+          ".validate": "newData.isBoolean() && (!data.parent().exists() ? newData.val() === false : (newData.val() === data.val() || data.parent().child('passengerId').val() === auth.uid || data.parent().child('driverId').val() === auth.uid))"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

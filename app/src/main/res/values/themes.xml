@@ -7,21 +7,12 @@
 
     <style name="Theme.TAXIAPP" parent="Base.Theme.TAXIAPP" />
 
-    <style name="roundedImage">
-        <item name="cornerSize">15%</item>
-        <item name="cornerFamily">rounded</item>
-    </style>
-
-    <style name="CountryPickerTheme"
-        parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="bottomSheetStyle">@style/CountryPickerSheet</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
-
-    <style name="CountryPickerSheet"
-        parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@color/dark_navy</item>
-        <item name="android:backgroundTint">@color/dark_navy</item>
+    <!-- Launch screen: animated mark on an amber disc, then the app theme. -->
+    <style name="Theme.TAXIAPP.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon_animated</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/amber</item>
+        <item name="windowSplashScreenAnimationDuration">900</item>
+        <item name="postSplashScreenTheme">@style/Theme.TAXIAPP</item>
     </style>
 </resources>

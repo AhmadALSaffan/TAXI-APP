@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# ── TaxiApp ───────────────────────────────────────────────────────────────
+-keepattributes SourceFile,LineNumberTable,Signature,*Annotation*
+
+# Realtime Database maps snapshots onto these classes by reflection
+# (getValue(Trip::class.java)); keep their fields and no-arg constructors.
+-keep class com.taxiapp.data.model.** { *; }

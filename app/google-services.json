@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "858344427928",
+    "firebase_url": "https://taxiapp-e2a5f-default-rtdb.firebaseio.com",
     "project_id": "taxiapp-e2a5f",
     "storage_bucket": "taxiapp-e2a5f.firebasestorage.app"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.taxiapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "858344427928-8on68c4f47cjvr0rvstctjst978q0lbh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxiapp",
+            "certificate_hash": "7f468277b48f5a9a9d0757caed55a51dc534b97d"
+          }
+        },
+        {
+          "client_id": "858344427928-vcu2a8kp73oboesthfci1ja8svtogncf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBi4iy9sSrsvptKvXYkztUtECuvEU-nk0I"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858344427928-kmvnrv2k8ucekd1t4hge3dckai5j6v3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

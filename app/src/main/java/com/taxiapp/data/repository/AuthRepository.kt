@@ -2,6 +2,7 @@ package com.taxiapp.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -74,16 +75,19 @@ class AuthRepository @Inject constructor(
     }
 
 
+    /** Sends an SMS code. Pass [resendToken] from an earlier onCodeSent to resend. */
     fun sendOtp(
         phoneNumber: String,
-        activity: androidx.fragment.app.FragmentActivity,
-        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
+        activity: android.app.Activity,
+        callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks,
+        resendToken: PhoneAuthProvider.ForceResendingToken? = null
     ) {
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phoneNumber)
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(activity)
             .setCallbacks(callbacks)
+            .apply { if (resendToken != null) setForceResendingToken(resendToken) }
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
@@ -95,6 +99,17 @@ class AuthRepository @Inject constructor(
             signInWithCredential(credential)
         } catch (e: Exception) {
             Resource.Error(e.message ?: "OTP verification failed")
+        }
+    }
+
+    /** Exchanges a Google ID token (from Credential Manager) for a Firebase session. */
+    suspend fun signInWithGoogle(idToken: String): Resource<FirebaseUser> {
+        return try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            val result = auth.signInWithCredential(credential).await()
+            Resource.Success(result.user!!)
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "Google sign-in failed")
         }
     }
 
@@ -127,7 +142,7 @@ class AuthRepository @Inject constructor(
                 val newUser = User(
                     uid         = uid,
                     phone       = firebaseUser.phoneNumber ?: "",
-                    displayName = "",
+                    displayName = firebaseUser.displayName ?: "",
                     email       = firebaseUser.email ?: "",
                     photoUrl    = firebaseUser.photoUrl?.toString() ?: "",
                     rating      = 5.0,

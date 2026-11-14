@@ -1,128 +1,76 @@
 package com.taxiapp.ui.splash
 
 import android.annotation.SuppressLint
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
-import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import android.os.SystemClock
+import androidx.activity.ComponentActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.taxiapp.R
-import com.taxiapp.databinding.ActivitySplashBinding
-import com.taxiapp.ui.auth.WelcomeActivity
 import com.taxiapp.ui.driver.DriverHomeActivity
 import com.taxiapp.ui.home.HomeActivity
+import com.taxiapp.ui.onboarding.OnboardingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withTimeoutOrNull
+import javax.inject.Inject
 
+/**
+ * Launch screen. The system shows the animated mark (Theme.TAXIAPP.Starting)
+ * while we work out where to send the user: onboarding when signed out,
+ * otherwise the rider or driver home.
+ */
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : ComponentActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
-    private val database: FirebaseDatabase  by lazy { FirebaseDatabase.getInstance() }
+    @Inject lateinit var auth: FirebaseAuth
+    @Inject lateinit var database: FirebaseDatabase
 
-
-    private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    @Volatile private var ready = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        splash.setKeepOnScreenCondition { !ready }
 
-        @Suppress("DEPRECATION")
-        window.decorView.systemUiVisibility = (
-                android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        or android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                )
-
-        startAnimations()
-        simulateLoadingAndNavigate()
-        hideSystemBars()
-    }
-
-
-    private fun startAnimations() {
-        val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        binding.cardHero.startAnimation(fadeIn)
-
-        binding.imgCarIcon.animate()
-            .alpha(1f).scaleX(1f).scaleY(1f)
-            .setStartDelay(300).setDuration(600).start()
-
-        binding.tvAppName.animate()
-            .alpha(1f).translationY(0f)
-            .setStartDelay(500).setDuration(600).start()
-
-        binding.tvTagline.animate()
-            .alpha(1f).translationY(0f)
-            .setStartDelay(700).setDuration(600).start()
-
-        binding.layoutProgress.animate()
-            .alpha(1f).setStartDelay(900).setDuration(400).start()
-
-        binding.layoutSecure.animate()
-            .alpha(1f).setStartDelay(1100).setDuration(400).start()
-    }
-
-
-    private fun simulateLoadingAndNavigate() {
         lifecycleScope.launch {
-            for (progress in 0..100 step 5) {
-                binding.progressBar.progress   = progress
-                binding.tvProgressPercent.text = "$progress%"
-                delay(90L)
-            }
-            delay(300L)
-            navigateNext()
+            val startedAt = SystemClock.uptimeMillis()
+            val destination = resolveDestination()
+
+            // Let the icon animation finish instead of cutting it off.
+            val shown = SystemClock.uptimeMillis() - startedAt
+            if (shown < MIN_VISIBLE_MS) delay(MIN_VISIBLE_MS - shown)
+
+            ready = true
+            startActivity(
+                Intent(this@SplashActivity, destination)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK),
+                ActivityOptions.makeCustomAnimation(
+                    this@SplashActivity, android.R.anim.fade_in, android.R.anim.fade_out,
+                ).toBundle(),
+            )
+            finish()
         }
     }
 
-    private fun navigateNext() {
-        val user = firebaseAuth.currentUser
-        if (user == null) {
-            go(WelcomeActivity::class.java)
-            return
+    private suspend fun resolveDestination(): Class<*> {
+        val user = auth.currentUser ?: return OnboardingActivity::class.java
+        val role = withTimeoutOrNull(ROLE_TIMEOUT_MS) {
+            runCatching {
+                database.getReference("users/${user.uid}/role").get().await().getValue(String::class.java)
+            }.getOrNull()
         }
-        lifecycleScope.launch {
-            val role = fetchRole(user.uid)
-            if (role == "driver") go(DriverHomeActivity::class.java)
-            else                  go(HomeActivity::class.java)
-        }
+        return if (role == "driver") DriverHomeActivity::class.java else HomeActivity::class.java
     }
 
-    private suspend fun fetchRole(uid: String): String {
-        return try {
-            val snapshot = database.getReference("users/$uid/role").get().await()
-            snapshot.getValue(String::class.java) ?: "passenger"
-        } catch (_: Exception) {
-            "passenger"
-        }
-    }
-
-    private fun go(destination: Class<*>) {
-        startActivity(
-            Intent(this, destination).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
-        )
-        @Suppress("DEPRECATION")
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }
-
-
-    private fun hideSystemBars() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
-        windowInsetsController.apply {
-            hide(WindowInsetsCompat.Type.navigationBars())
-            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        }
+    private companion object {
+        const val MIN_VISIBLE_MS = 850L
+        const val ROLE_TIMEOUT_MS = 4_000L
     }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "taxiapp-functions",
+  "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "serve": "firebase emulators:start --only functions,database,auth",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "test": "node --test",
+    "test:rules": "firebase emulators:exec --only database --project taxiapp-e2a5f \"node rules.emulator.js\""
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.3.0"
+  }
+}
